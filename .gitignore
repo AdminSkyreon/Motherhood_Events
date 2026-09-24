@@ -13,8 +13,8 @@ out/
 npm-debug.log*
 .DS_Store
 
-# large featured video — use Git LFS or CDN (see README)
-public/videos/*.mp4
+# uncompressed source masters (re-compress into public/videos/ for the site)
+media-source/
 
 # AI / scratch exports (canonical assets live in public/)
 assets/generated/

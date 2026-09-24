@@ -33,7 +33,7 @@ Components read from `eventConfig` only. Do not hard-code event text in componen
 | `public/logo-placeholder.svg` | Header logo — replace with official Motherhood logo |
 | `public/og-image.svg` | Social preview — replace with **og-image.png** 1200×630 before launch |
 | `public/speakers/*.svg` | Speaker placeholders — replace with JPG/WebP paths in `data/event.ts` |
-| `public/videos/vijayarathna-sireesha-reddy.mp4` | Featured message video (~711 MB). Set `fileSrc` on a video in `data/event.ts`. Use **Git LFS** or host on CDN before pushing to GitHub. |
+| `public/videos/vijayarathna-sireesha-reddy.mp4` | Featured message video (web-compressed ~10 MB, 720p). Original 4K master: `media-source/` (gitignored). |
 
 ## Build and export
 
@@ -56,7 +56,7 @@ Pushes to **`main`** run [`.github/workflows/deploy-pages.yml`](.github/workflow
 
 - **Live URL:** [https://adminskyreon.github.io/Motherhood_Events/](https://adminskyreon.github.io/Motherhood_Events/)
 - Builds with `NEXT_PUBLIC_BASE_PATH=/Motherhood_Events` so assets resolve under the project Pages path.
-- The featured **MP4 is gitignored** (711 MB). For video on Pages, use [Git LFS](https://git-lfs.com/) or host the file on a CDN and point `fileSrc` in `data/event.ts`.
+- The featured **MP4 is committed** (720p web encode). Re-compress from `media-source/` with ffmpeg if you replace the master.
 
 In the GitHub repo: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
