@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Dr. Madhushree Vijayakumar">
+  <defs>
+    <linearGradient id="g" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#7ec4ef"/>
+      <stop offset="100%" stop-color="#0057A4"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="600" fill="url(#g)"/>
+  <text x="240" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="500" fill="rgba(255,255,255,0.22)">MV</text>
+</svg>

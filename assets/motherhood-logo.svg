@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" role="img" aria-label="Motherhood Hospitals">
+  <!-- Replace with MH_Logo_edited.png from brand / Wix reference when available -->
+  <path d="M36 52S14 38.6 14 24.2C14 17.4 19.6 12 26 12c3.6 0 6.8 1.6 6.8 5.2 0-3.6 3.2-5.2 6.8-5.2 6.4 0 12 5.4 12 12.2C51.6 38.6 36 52 36 52Z" fill="#DB5070" transform="translate(0 4) scale(0.85)"/>
+  <text x="72" y="40" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" fill="#231F20">motherhood</text>
+  <text x="72" y="58" font-family="Montserrat, Arial, sans-serif" font-size="10" font-weight="700" fill="#0057A4" letter-spacing="0.32em">HOSPITALS</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Mr. Vijayarathna Venkatraman">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#2a6fb8"/>
+      <stop offset="100%" stop-color="#003566"/>
+    </linearGradient>
+    <pattern id="grain" width="4" height="4" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="0.6" fill="#fff" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="480" height="600" fill="url(#g)"/>
+  <rect width="480" height="600" fill="url(#grain)"/>
+  <text x="240" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="500" fill="rgba(255,255,255,0.22)">VV</text>
+</svg>
