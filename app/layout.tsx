@@ -79,9 +79,6 @@ export const metadata: Metadata = {
       "CME on natural birthing — agenda, videos, speakers, and venue. Motherhood Hospitals India.",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.svg",
-  },
 };
 
 export const viewport: Viewport = {
