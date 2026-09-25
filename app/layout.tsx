@@ -1,11 +1,35 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { DM_Serif_Display, Inter, Lobster, Montserrat, Sorts_Mill_Goudy } from "next/font/google";
 import "./globals.css";
 import { getSiteUrl } from "@/lib/site-url";
 
 /*
   Backend team: also send the X-Robots-Tag: noindex, nofollow response header for this URL.
 */
+
+/* Brochure fonts: Lobster (title), Montserrat ≈ Gotham (body), Sorts Mill Goudy ≈ Goudy Old Style (tagline) */
+const lobster = Lobster({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-lobster",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const goudy = Sorts_Mill_Goudy({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-goudy",
+  display: "swap",
+});
 
 const serif = DM_Serif_Display({
   subsets: ["latin"],
@@ -25,11 +49,11 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Natural Birthing Event | Motherhood Hospitals",
+    default: "Normalising the Normal | Motherhood Hospitals",
     template: "%s | Motherhood Hospitals",
   },
   description:
-    "Join Motherhood Hospitals for the Natural Birthing CME — agenda, faculty videos, speakers, and venue details for clinical teams.",
+    "Normalising the Normal — a day of scientific learning on 4 October 2026 at The Chancery Pavilion, Bengaluru.",
   robots: {
     index: false,
     follow: false,
@@ -75,7 +99,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${lobster.variable} ${montserrat.variable} ${goudy.variable} ${serif.variable} ${sans.variable}`}>
       <body>
         <a href="#top" className="skip-link">
           Skip to content

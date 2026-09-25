@@ -72,7 +72,195 @@ html {
 }
 
 body {
-  @apply bg-brand-cream font-sans text-brand-ink antialiased;
+  @apply bg-[#f7f1e5] font-sans text-[#4e564c] antialiased;
+}
+
+/* Landing page — styled after the Natural Birthing Programme brochure */
+.lp {
+  --lp-cream: #faf5e9;
+  --lp-olive: #606459;
+  --lp-ink: #231f20;
+  --lp-pink: #d65071;
+  --lp-blue: #0d589f;
+  --lp-grey: #403f41;
+  --lp-panel: #efe4d1;
+  --lp-panel-border: #a7a9ac;
+  font-family: var(--font-montserrat), "Gotham", system-ui, sans-serif;
+  color: var(--lp-ink);
+  background: var(--lp-cream);
+}
+
+.lp-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--lp-cream);
+  padding: clamp(4rem, 8vw, 7.5rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.lp-section + .lp-section {
+  border-top: 1px solid rgba(167, 169, 172, 0.25);
+}
+
+.lp-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.lp-lobster {
+  font-family: var(--font-lobster), cursive;
+  font-weight: 400;
+}
+
+.lp-goudy {
+  font-family: var(--font-goudy), "Goudy Old Style", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.lp-eyebrow {
+  font-weight: 700;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: var(--lp-ink);
+}
+
+.lp-title {
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+  line-height: 1.12;
+  color: var(--lp-olive);
+}
+
+.lp-panel {
+  background: var(--lp-panel);
+  border: 1px solid var(--lp-panel-border);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(96, 100, 89, 0.08);
+}
+
+.lp-divider {
+  position: relative;
+}
+
+.lp-divider + .lp-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  right: 0.5rem;
+  border-top: 1px solid rgba(63, 63, 64, 0.5);
+}
+
+/* Brochure artwork pieces, blended into the cream background with feathered edges */
+.lp-deco {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  height: auto;
+}
+
+.lp-deco--tr {
+  top: 0;
+  right: 0;
+  width: clamp(150px, 20vw, 340px);
+  -webkit-mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
+  mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
+}
+
+.lp-deco--tl {
+  top: 0;
+  left: 0;
+  width: clamp(140px, 17vw, 300px);
+  -webkit-mask-image: radial-gradient(ellipse at top left, #000 45%, transparent 72%);
+  mask-image: radial-gradient(ellipse at top left, #000 45%, transparent 72%);
+}
+
+.lp-deco--bl {
+  bottom: 0;
+  left: 0;
+  width: clamp(240px, 34vw, 600px);
+  -webkit-mask-image: radial-gradient(ellipse at bottom left, #000 42%, transparent 72%);
+  mask-image: radial-gradient(ellipse at bottom left, #000 42%, transparent 72%);
+}
+
+.lp-deco--br {
+  bottom: 0;
+  right: 0;
+  width: clamp(130px, 15vw, 260px);
+  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 45%, transparent 75%);
+  mask-image: radial-gradient(ellipse at bottom right, #000 45%, transparent 75%);
+}
+
+.lp-deco--r {
+  top: 38%;
+  right: 0;
+  width: clamp(48px, 5vw, 96px);
+  -webkit-mask-image: radial-gradient(ellipse 100% 50% at right center, #000 40%, transparent 85%);
+  mask-image: radial-gradient(ellipse 100% 50% at right center, #000 40%, transparent 85%);
+}
+
+/* Feather left and top edges (artwork anchored bottom-right) */
+.lp-fade-lt {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24%), linear-gradient(to bottom, transparent, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 24%), linear-gradient(to bottom, transparent, #000 14%);
+  mask-composite: intersect;
+}
+
+.lp-fade-r {
+  -webkit-mask-image: radial-gradient(ellipse 100% 70% at right center, #000 45%, transparent 90%);
+  mask-image: radial-gradient(ellipse 100% 70% at right center, #000 45%, transparent 90%);
+}
+
+/* Hover zoom on text */
+.lp-zoom {
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.25s ease;
+  will-change: transform;
+}
+
+.lp-zoom:hover {
+  transform: scale(1.05);
+}
+
+.lp-row {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lp-row:hover {
+  transform: scale(1.015);
+  background-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 10px 30px rgba(96, 100, 89, 0.1);
+}
+
+.lp-card {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lp-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.lp-card img {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lp-card:hover img {
+  transform: scale(1.07);
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .lp-zoom:hover,
+  .lp-row:hover,
+  .lp-card:hover,
+  .lp-card:hover img {
+    transform: none;
+  }
 }
 
 :focus-visible {
