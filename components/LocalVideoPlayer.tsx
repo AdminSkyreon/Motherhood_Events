@@ -33,10 +33,12 @@ export function LocalVideoPlayer({
     setStarted(true);
     const attempt = video.play();
     if (!attempt) return;
-    attempt.catch(() => {
+    attempt.catch((error: unknown) => {
+      // AbortError: paused (e.g. scrolled away) before playback started — not an autoplay block.
+      if (error instanceof DOMException && error.name === "AbortError") return;
       video.muted = true;
       setNeedsSound(true);
-      void video.play();
+      video.play().catch(() => {});
     });
   };
 

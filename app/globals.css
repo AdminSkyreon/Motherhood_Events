@@ -92,14 +92,33 @@ body {
 
 .lp-section {
   position: relative;
-  isolation: isolate;
+  z-index: 1;
   overflow: hidden;
-  background: var(--lp-cream);
-  padding: clamp(4rem, 8vw, 7.5rem) clamp(1.25rem, 5vw, 4rem);
+  padding: clamp(2.5rem, 7vw, 7.5rem) clamp(1.25rem, 5vw, 4rem);
 }
 
-.lp-section + .lp-section {
-  border-top: 1px solid rgba(167, 169, 172, 0.25);
+/* Sections between the hero and the closing page share one continuous background */
+.lp-flow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.lp-float-l,
+.lp-float-r {
+  width: var(--w, clamp(90px, 14vw, 260px));
+}
+
+.lp-float-l {
+  left: 0;
+  -webkit-mask-image: radial-gradient(ellipse 100% 55% at left center, #000 35%, transparent 80%);
+  mask-image: radial-gradient(ellipse 100% 55% at left center, #000 35%, transparent 80%);
+}
+
+.lp-float-r {
+  right: 0;
+  -webkit-mask-image: radial-gradient(ellipse 100% 55% at right center, #000 35%, transparent 80%);
+  mask-image: radial-gradient(ellipse 100% 55% at right center, #000 35%, transparent 80%);
 }
 
 .lp-container {
@@ -252,6 +271,120 @@ body {
 
 .lp-card:hover img {
   transform: scale(1.07);
+}
+
+/* Load animation (hero): `--d` is the step in the sequence. Fill mode is `backwards`
+   so the animation never overrides the hover zoom transform once it has finished. */
+@keyframes lp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lp-write {
+  from {
+    clip-path: inset(-10% 100% -20% 0);
+  }
+  to {
+    clip-path: inset(-10% -5% -20% 0);
+  }
+}
+
+@keyframes lp-art {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lp-drop {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes lp-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.lp-in {
+  animation: lp-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(var(--d, 0) * 130ms + 150ms);
+}
+
+.lp-write {
+  display: inline-block;
+  animation: lp-write 1.1s cubic-bezier(0.6, 0.05, 0.3, 1) backwards;
+  animation-delay: calc(var(--d, 0) * 130ms + 150ms);
+}
+
+.lp-in-art {
+  animation: lp-art 1.8s ease-out backwards;
+  animation-delay: calc(var(--d, 0) * 130ms + 150ms);
+}
+
+.lp-in-drop {
+  animation: lp-drop 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards 0.1s;
+}
+
+/* Scroll reveal: RevealOnScroll adds `.lp-reveal-ready` to <html> and `.is-revealed` + `--reveal-delay` to each item,
+   so content stays visible if JavaScript never runs. */
+.lp-reveal-ready [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+}
+
+.lp-reveal-ready [data-reveal].is-revealed {
+  animation: lp-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.lp-divider::before {
+  transform-origin: left center;
+}
+
+.lp-reveal-ready .lp-divider[data-reveal]:not(.is-revealed)::before {
+  transform: scaleX(0);
+}
+
+.lp-reveal-ready .lp-divider[data-reveal].is-revealed::before {
+  animation: lp-draw 0.9s cubic-bezier(0.6, 0.05, 0.3, 1) backwards;
+  animation-delay: calc(var(--reveal-delay, 0ms) + 150ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-in,
+  .lp-write,
+  .lp-in-art,
+  .lp-in-drop,
+  .lp-reveal-ready [data-reveal].is-revealed,
+  .lp-reveal-ready .lp-divider[data-reveal].is-revealed::before {
+    animation: none;
+  }
+
+  .lp-reveal-ready [data-reveal]:not(.is-revealed) {
+    opacity: 1;
+  }
+
+  .lp-reveal-ready .lp-divider[data-reveal]:not(.is-revealed)::before {
+    transform: none;
+  }
 }
 
 @media (hover: none), (prefers-reduced-motion: reduce) {
