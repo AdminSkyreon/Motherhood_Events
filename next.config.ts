@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
   assetPrefix: basePath ? `${basePath}/` : undefined,
   images: {
     unoptimized: true,
-    remotePatterns: [
-      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
-    ],
   },
   trailingSlash: true,
 };

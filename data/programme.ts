@@ -216,13 +216,14 @@ export const programmeNotes = {
 };
 
 export const programmeMessage = {
-  eyebrow: "Messages",
   title: "Words from Our Leaders",
-  people: [
-    { name: "Mr. Vijayarathna Venkatraman", role: "Chief Executive Officer, Motherhood Hospitals" },
-    { name: "Dr. Sireesha Reddy", role: "Sr. Consultant - Obstetrics & Gynaecology" },
-  ],
-  caption: "Perspectives on natural birthing and the journey of 100+ natural / water births at Motherhood.",
+  video: {
+    src: "/videos/vijayarathna-sireesha-reddy.mp4",
+    poster: "/videos/vijayarathna-sireesha-reddy-poster.jpg",
+    title: "A Message from Leadership & Clinical Faculty",
+    speakers: "Mr. Vijayarathna Venkatraman & Dr. Sireesha Reddy",
+    duration: "2:15",
+  },
 };
 
 export const programmeThanks = {

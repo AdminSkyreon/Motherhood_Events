@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#FBDCE9"/>
-  <rect x="70" y="50" width="1060" height="530" fill="#FFFFFF" stroke="#DB5070" stroke-width="1.5"/>
-  <rect x="86" y="66" width="1028" height="498" fill="none" stroke="#DCF2FD" stroke-width="8"/>
-  <text x="600" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#DB5070" letter-spacing="10">YOU ARE CORDIALLY INVITED</text>
-  <text x="600" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="72" fill="#231F20">Natural Birthing</text>
-  <text x="600" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="56" fill="#DB5070" font-style="italic">Event</text>
-  <text x="600" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#0057A4" letter-spacing="4">MOTHERHOOD HOSPITALS · CME</text>
-</svg>

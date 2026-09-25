@@ -11,9 +11,7 @@ import {
   type AgendaBlock,
   type AgendaLine,
 } from "@/data/programme";
-import { eventConfig } from "@/data/event";
 import { assetPath } from "@/lib/site-url";
-import { getDisplayVideos } from "./EventVideo";
 import { LocalVideoPlayer } from "./LocalVideoPlayer";
 import { RevealOnScroll } from "./RevealOnScroll";
 
@@ -281,16 +279,14 @@ function Speakers() {
 
 /** Video message (not in the PDF; styled like its inner pages) */
 function Message() {
-  const video = getDisplayVideos(eventConfig.videos)[0];
-  if (!video?.fileSrc) return null;
   const m = programmeMessage;
+  const video = m.video;
 
   return (
     <section className="lp-section" aria-labelledby="lp-message">
       <div className="lp-container">
         <div className="text-center">
-          <p {...reveal} className="lp-eyebrow lp-zoom inline-block [transform-origin:center]">{m.eyebrow}</p>
-          <h2 {...reveal} id="lp-message" className="lp-title lp-zoom mt-3 [transform-origin:center]">
+          <h2 {...reveal} id="lp-message" className="lp-title lp-zoom [transform-origin:center]">
             {m.title}
           </h2>
         </div>
@@ -298,21 +294,12 @@ function Message() {
         <div {...reveal} className="lp-panel mx-auto mt-[clamp(1.75rem,3vw,2.5rem)] max-w-5xl p-[clamp(0.75rem,2vw,1.5rem)]">
           <div className="overflow-hidden rounded-[10px] shadow-[0_12px_32px_rgba(35,31,32,0.18)]">
             <LocalVideoPlayer
-              fileSrc={video.fileSrc}
+              fileSrc={video.src}
               title={video.title}
-              personName={video.personName}
+              personName={video.speakers}
               duration={video.duration}
-              posterSrc={video.posterSrc}
+              posterSrc={video.poster}
             />
-          </div>
-          <div className="grid gap-5 px-[clamp(0.5rem,2vw,1.5rem)] pb-3 pt-6 md:grid-cols-[1fr_1fr_1.3fr] md:items-start">
-            {m.people.map((p) => (
-              <div key={p.name} {...reveal} className="lp-zoom">
-                <p className="text-[clamp(1rem,1.3vw,1.15rem)] font-bold text-[var(--lp-pink)]">{p.name}</p>
-                <p className="mt-1 text-[clamp(0.85rem,1vw,0.95rem)] font-medium">{p.role}</p>
-              </div>
-            ))}
-            <p {...reveal} className="lp-zoom text-[clamp(0.85rem,1vw,0.95rem)] font-medium italic leading-relaxed text-[var(--lp-grey)]">{m.caption}</p>
           </div>
         </div>
       </div>

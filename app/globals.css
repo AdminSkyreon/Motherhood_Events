@@ -2,63 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Theme tokens — brand team: re-theme here only.
-*/
+/* Theme tokens used by Tailwind colours/shadows (tailwind.config.ts) */
 :root {
   --color-brand-pink: #db5070;
   --color-brand-blue: #0057a4;
   --color-brand-ink: #231f20;
-  --color-brand-blush: #fbdce9;
-  --color-brand-peach: #ffe8df;
-  --color-brand-cream: #fffbf7;
-  --color-brand-accent: #c94563;
-
-  --color-surface: #ffffff;
-  --color-surface-muted: #f7f4f2;
-
-  --radius-card: 1.25rem;
   --radius-pill: 9999px;
-
   --shadow-soft: 0 24px 48px rgba(35, 31, 32, 0.06);
-  --shadow-card: 0 16px 40px rgba(35, 31, 32, 0.08);
   --shadow-lift: 0 20px 50px rgba(219, 80, 112, 0.18);
-
-  --max-content: 68rem;
-
-  /* Hero legibility — tune overlay without touching layout */
-  --hero-overlay: linear-gradient(
-    to top right,
-    rgba(35, 31, 32, 0.65) 0%,
-    rgba(35, 31, 32, 0.38) 42%,
-    rgba(35, 31, 32, 0.15) 100%
-  );
-  --hero-overlay-mobile: linear-gradient(
-    to top,
-    rgba(35, 31, 32, 0.78) 0%,
-    rgba(35, 31, 32, 0.52) 38%,
-    rgba(35, 31, 32, 0.22) 100%
-  );
-  --hero-text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
-  --hero-accent: #ff8fa8;
-}
-
-@media (min-width: 1440px) {
-  :root {
-    --max-content: 76rem;
-  }
-}
-
-@media (min-width: 1680px) {
-  :root {
-    --max-content: 90rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  :root {
-    --max-content: 104rem;
-  }
 }
 
 html {
@@ -94,7 +45,7 @@ body {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  padding: clamp(2.5rem, 7vw, 7.5rem) clamp(1.25rem, 5vw, 4rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 4rem);
 }
 
 /* Sections between the hero and the closing page share one continuous background */
@@ -183,14 +134,6 @@ body {
   height: auto;
 }
 
-.lp-deco--tr {
-  top: 0;
-  right: 0;
-  width: clamp(150px, 20vw, 340px);
-  -webkit-mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
-  mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
-}
-
 .lp-deco--tl {
   top: 0;
   left: 0;
@@ -205,14 +148,6 @@ body {
   width: clamp(240px, 34vw, 600px);
   -webkit-mask-image: radial-gradient(ellipse at bottom left, #000 42%, transparent 72%);
   mask-image: radial-gradient(ellipse at bottom left, #000 42%, transparent 72%);
-}
-
-.lp-deco--br {
-  bottom: 0;
-  right: 0;
-  width: clamp(130px, 15vw, 260px);
-  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 45%, transparent 75%);
-  mask-image: radial-gradient(ellipse at bottom right, #000 45%, transparent 75%);
 }
 
 .lp-deco--r {
@@ -406,94 +341,6 @@ body {
 }
 
 @layer utilities {
-  .arch-top {
-    border-radius: 50% 50% 1rem 1rem / 18% 18% 1rem 1rem;
-  }
-
-  .arch-photo {
-    border-radius: 50% 50% 0.75rem 0.75rem / 22% 22% 0.75rem 0.75rem;
-  }
-
-  .hero-grain {
-    position: relative;
-  }
-
-  .hero-grain::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .play-pulse {
-    animation: play-pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes play-pulse {
-    0%,
-    100% {
-      box-shadow: 0 0 0 0 rgba(219, 80, 112, 0.45);
-    }
-    50% {
-      box-shadow: 0 0 0 14px rgba(219, 80, 112, 0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .play-pulse {
-      animation: none;
-    }
-    .live-dot-pulse {
-      animation: none;
-    }
-  }
-
-  .hero-overlay {
-    background: var(--hero-overlay-mobile);
-  }
-
-  @media (min-width: 768px) {
-    .hero-overlay {
-      background: var(--hero-overlay);
-    }
-  }
-
-  .hero-readable {
-    color: #fff;
-    text-shadow: var(--hero-text-shadow);
-  }
-
-  .hero-glass-bar {
-    background: rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .arch-speaker {
-    border-radius: 9999px 9999px 1rem 1rem;
-  }
-
-  .speaker-card {
-    background: linear-gradient(180deg, #ffffff 0%, #fffbf7 100%);
-  }
-
-  .live-dot-pulse {
-    animation: live-dot-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes live-dot-pulse {
-    0%,
-    100% {
-      box-shadow: 0 0 0 0 rgba(219, 80, 112, 0.55);
-    }
-    50% {
-      box-shadow: 0 0 0 10px rgba(219, 80, 112, 0);
-    }
-  }
-
   .video-play-ring {
     animation: video-play-ring 2.4s ease-in-out infinite;
   }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Serif_Display, Inter, Lobster, Montserrat, Sorts_Mill_Goudy } from "next/font/google";
+import { Inter, Lobster, Montserrat, Sorts_Mill_Goudy } from "next/font/google";
 import "./globals.css";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -28,13 +28,6 @@ const goudy = Sorts_Mill_Goudy({
   weight: "400",
   style: "italic",
   variable: "--font-goudy",
-  display: "swap",
-});
-
-const serif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-serif",
   display: "swap",
 });
 
@@ -99,7 +92,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${lobster.variable} ${montserrat.variable} ${goudy.variable} ${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${lobster.variable} ${montserrat.variable} ${goudy.variable} ${sans.variable}`}>
       <body>
         <a href="#top" className="skip-link">
           Skip to content

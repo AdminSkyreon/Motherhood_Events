@@ -7,8 +7,6 @@ type Props = {
   fileSrc: string;
   title: string;
   personName?: string;
-  designation?: string;
-  messageTitle?: string;
   duration?: string;
   posterSrc?: string;
   className?: string;

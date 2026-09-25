@@ -14,25 +14,26 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Where to edit content
 
-**All copy, dates, agenda, videos, speakers, and venue** live in one file:
+**All copy, dates, agenda, speakers, notes, and the video** live in one file:
 
-- [`data/event.ts`](data/event.ts)
+- [`data/programme.ts`](data/programme.ts) — text from the *Natural Birthing Programme* brochure (PDF)
 
-Components read from `eventConfig` only. Do not hard-code event text in components.
+The page itself is [`components/Landing.tsx`](components/Landing.tsx), which reads from `data/programme.ts`.
 
 ## Where to change colors and fonts
 
-1. **Colors, radii, shadows** — CSS variables in [`app/globals.css`](app/globals.css) (`:root`).
-2. **Tailwind mapping** — [`tailwind.config.ts`](tailwind.config.ts) (`brand.*`, `surface.*`).
-3. **Fonts** — [`app/layout.tsx`](app/layout.tsx) (`DM_Serif_Display` + `Inter` via `next/font`). Swap families there and update `--font-serif` / `--font-sans` if needed.
+1. **Landing page colours** — `--lp-*` variables on `.lp` in [`app/globals.css`](app/globals.css).
+2. **Fonts** — [`app/layout.tsx`](app/layout.tsx): Lobster (title), Montserrat (≈ Gotham, body), Sorts Mill Goudy (≈ Goudy Old Style, tagline) via `next/font`.
+3. **Animations** — load sequence (`.lp-in`, `.lp-write`) and scroll reveal (`[data-reveal]`, driven by [`components/RevealOnScroll.tsx`](components/RevealOnScroll.tsx)) in `app/globals.css`.
 
 ## Assets
 
 | File | Purpose |
 |------|---------|
-| `public/logo-placeholder.svg` | Header logo — replace with official Motherhood logo |
-| `public/og-image.svg` | Social preview — replace with **og-image.png** 1200×630 before launch |
-| `public/speakers/*.svg` | Speaker placeholders — replace with JPG/WebP paths in `data/event.ts` |
+| `public/brochure/art/*` | Watercolour, leaves and mother illustration cut from the brochure PDF |
+| `public/brochure/speakers/*` | Speaker photos from the brochure PDF |
+| `public/motherhood-logo.png` | Motherhood logo |
+| `public/og-image.png` | Social preview image |
 | `public/videos/vijayarathna-sireesha-reddy.mp4` | Featured message video (web-compressed ~10 MB, 720p). Original 4K master: `media-source/` (gitignored). |
 
 ## Build and export
@@ -68,24 +69,15 @@ If using `NEXT_PUBLIC_BASE_PATH`, rebuild with that variable set so asset links 
 
 ## Pre-launch checklist
 
-- [ ] Replace all placeholders in `data/event.ts` (date, venue, agenda, bios)
-- [ ] Replace `youtubeId` values with real YouTube IDs (or switch embed strategy if using Drive)
-- [ ] Swap logo and speaker photos in `public/`
+- [ ] Confirm all copy in `data/programme.ts` against the final brochure
 - [ ] Add **`public/og-image.png`** (1200×630) and update `app/layout.tsx` OG `images` URL if needed
 - [ ] Confirm **`<meta name="robots" content="noindex, nofollow">`** (via `metadata.robots` in `layout.tsx`)
 - [ ] Backend: send **`X-Robots-Tag: noindex, nofollow`** for this URL on the origin
-- [ ] Remove or keep restrictive `robots.txt` on the host (do not allow indexing until brand approves)
 - [ ] Run Lighthouse on production build (target 90+)
-- [ ] Test keyboard: header menu, speaker modal (Esc, focus return), video facades
-- [ ] Test `prefers-reduced-motion` (no scroll animations)
+- [ ] Test `prefers-reduced-motion` (no load or scroll animations)
 
 ## Tech notes
 
 - Next.js App Router, TypeScript, Tailwind CSS
 - **No** API routes, server actions, forms, analytics, or cookies
-- Framer Motion used only in `ScrollReveal`; respects `prefers-reduced-motion`
-- YouTube embeds load only after click (`youtube-nocookie.com`)
-
-## Legacy static site
-
-The previous HTML version remains in the repo root (`index.html`, `assets/`) for reference. The showcase build is the Next.js app described above.
+- Animations are plain CSS plus one small `IntersectionObserver`; both respect `prefers-reduced-motion`
