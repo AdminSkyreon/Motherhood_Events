@@ -8,7 +8,7 @@ export function Footer({ config }: Props) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-ink px-4 py-10 md:px-6 md:py-12">
+    <footer className="bg-brand-ink px-4 py-10 md:px-6 md:py-12 2xl:px-10">
       <div className="mx-auto max-w-content">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left">
           <div>

@@ -8,7 +8,7 @@ export function Venue({ config }: Props) {
   const { venue } = config;
 
   return (
-    <section id="venue" className="bg-white px-4 py-12 md:px-6 md:py-16" aria-labelledby="venue-heading">
+    <section id="venue" className="bg-white px-4 py-12 md:px-6 md:py-16 2xl:px-10" aria-labelledby="venue-heading">
       <div className="mx-auto max-w-content">
         <ScrollReveal>
           <SectionHeading eyebrow="Location" title="Venue" id="venue-heading" />

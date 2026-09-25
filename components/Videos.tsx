@@ -25,7 +25,7 @@ export function Videos({ config }: Props) {
   return (
     <section
       id="videos"
-      className="relative overflow-hidden bg-brand-ink px-4 py-12 md:px-6 md:py-16"
+      className="relative overflow-hidden bg-brand-ink px-4 py-12 md:px-6 md:py-16 2xl:px-10"
       aria-labelledby="videos-heading"
     >
       <div
@@ -50,8 +50,10 @@ export function Videos({ config }: Props) {
         </div>
 
         <div
-          className={`mx-auto mt-8 grid gap-6 ${
-            displayVideos.length > 1 ? "max-w-none lg:grid-cols-2" : "max-w-4xl"
+          className={`mx-auto mt-8 grid w-full gap-6 ${
+            displayVideos.length > 1
+              ? "lg:max-w-6xl lg:grid-cols-2"
+              : "lg:max-w-4xl xl:max-w-5xl 2xl:max-w-6xl"
           }`}
         >
           {displayVideos.map((video) => (

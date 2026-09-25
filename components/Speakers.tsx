@@ -58,7 +58,7 @@ export function Speakers({ config }: Props) {
   return (
     <section
       id="speakers"
-      className="relative scroll-mt-20 overflow-hidden bg-white px-4 py-12 md:scroll-mt-24 md:px-6 md:py-16"
+      className="relative scroll-mt-20 overflow-hidden bg-white px-4 py-12 md:scroll-mt-24 md:px-6 md:py-16 2xl:px-10"
       aria-labelledby="speakers-heading"
     >
       <div

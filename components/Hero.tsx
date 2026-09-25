@@ -42,7 +42,7 @@ export function Hero({ config }: Props) {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto flex min-h-0 w-full max-w-content flex-1 flex-col justify-center px-4 pb-4 pt-20 md:px-6 md:pt-24">
+      <div className="relative mx-auto flex min-h-0 w-full max-w-content flex-1 flex-col justify-center px-4 pb-4 pt-20 md:px-6 md:pt-24 2xl:px-10">
         <ScrollReveal>
           <p className="hero-readable text-center text-[0.7rem] font-bold uppercase tracking-[0.24em] md:text-left">
             {config.siteName}
@@ -90,7 +90,7 @@ export function Hero({ config }: Props) {
         </ScrollReveal>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-content shrink-0 px-4 pb-4 md:px-6 md:pb-6">
+      <div className="relative z-10 mx-auto w-full max-w-content shrink-0 px-4 pb-4 md:px-6 md:pb-6 2xl:px-10">
         <dl className="hero-glass-bar grid grid-cols-3 gap-3 rounded-2xl px-4 py-3 sm:gap-6 sm:px-6 sm:py-4">
           <div className="min-w-0">
             <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/80">Date</dt>

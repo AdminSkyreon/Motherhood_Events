@@ -24,7 +24,7 @@
   --shadow-card: 0 16px 40px rgba(35, 31, 32, 0.08);
   --shadow-lift: 0 20px 50px rgba(219, 80, 112, 0.18);
 
-  --max-content: 76rem;
+  --max-content: 68rem;
 
   /* Hero legibility — tune overlay without touching layout */
   --hero-overlay: linear-gradient(
@@ -41,6 +41,24 @@
   );
   --hero-text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
   --hero-accent: #ff8fa8;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --max-content: 76rem;
+  }
+}
+
+@media (min-width: 1680px) {
+  :root {
+    --max-content: 90rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --max-content: 104rem;
+  }
 }
 
 html {

@@ -150,7 +150,7 @@ export function Agenda({ config }: Props) {
   );
 
   return (
-    <section id="agenda" className="bg-brand-cream px-4 py-12 md:px-6 md:py-16" aria-labelledby="agenda-heading">
+    <section id="agenda" className="bg-brand-cream px-4 py-12 md:px-6 md:py-16 2xl:px-10" aria-labelledby="agenda-heading">
       <div className="mx-auto max-w-content">
         <div className="lg:grid lg:grid-cols-[minmax(220px,280px)_1fr] lg:gap-10">
           <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">

@@ -42,7 +42,7 @@ export function EventDetails({ config }: Props) {
   ];
 
   return (
-    <section id="about" className="bg-white px-4 py-12 md:px-6 md:py-16" aria-labelledby="about-heading">
+    <section id="about" className="bg-white px-4 py-12 md:px-6 md:py-16 2xl:px-10" aria-labelledby="about-heading">
       <div className="mx-auto max-w-content">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <ScrollReveal className="lg:col-span-5">

@@ -44,7 +44,7 @@ export function Header({ config }: Props) {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-4 md:px-6 md:py-5">
+      <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-4 md:px-6 md:py-5 2xl:px-10">
         <Link href="#top" className="shrink-0 rounded-lg focus-visible:outline-offset-4">
           <Image
             src={assetPath(config.logo.src)}
