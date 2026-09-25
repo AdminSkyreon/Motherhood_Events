@@ -16,7 +16,7 @@ export function Hero({ config }: Props) {
   return (
     <section
       id="top"
-      className="hero-grain relative flex min-h-[100svh] flex-col justify-between overflow-hidden"
+      className="hero-grain relative flex h-[100svh] max-h-[100svh] flex-col overflow-hidden"
       aria-labelledby="hero-title"
     >
       <div className="absolute inset-0" aria-hidden="true">
@@ -42,30 +42,30 @@ export function Hero({ config }: Props) {
         aria-hidden="true"
       />
 
-      <div className="relative mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 pb-32 pt-32 md:px-6 md:pb-36 md:pt-36">
+      <div className="relative mx-auto flex min-h-0 w-full max-w-content flex-1 flex-col justify-center px-4 pb-4 pt-20 md:px-6 md:pt-24">
         <ScrollReveal>
           <p className="hero-readable text-center text-[0.7rem] font-bold uppercase tracking-[0.24em] md:text-left">
             {config.siteName}
           </p>
           <h1
             id="hero-title"
-            className="hero-readable mt-4 text-center font-serif text-[clamp(3rem,8vw,6.5rem)] font-normal leading-[0.95] tracking-tight md:text-left"
+            className="hero-readable mt-2 text-center font-serif text-[clamp(2.35rem,5.5vw,4.75rem)] font-normal leading-[0.95] tracking-tight md:text-left"
           >
             <span className="italic text-[var(--hero-accent)]">Natural</span> Birthing Event
           </h1>
-          <p className="hero-readable mx-auto mt-6 max-w-xl text-center text-lg leading-relaxed md:mx-0 md:text-left md:text-xl">
+          <p className="hero-readable mx-auto mt-3 max-w-xl text-center text-base leading-snug md:mx-0 md:text-left md:text-lg">
             {config.tagline}
           </p>
         </ScrollReveal>
 
-        <ScrollReveal className="mt-10 md:mt-12" delay={0.1}>
+        <ScrollReveal className="mt-5 md:mt-6" delay={0.1}>
           <p className="hero-readable mb-4 text-center text-[0.65rem] font-bold uppercase tracking-[0.2em] opacity-80 md:text-left">
             Countdown to start
           </p>
           <Countdown targetIso={config.startIso} variant="hero" />
         </ScrollReveal>
 
-        <ScrollReveal className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-start" delay={0.16}>
+        <ScrollReveal className="mt-5 flex flex-col gap-2 sm:flex-row sm:justify-start" delay={0.16}>
           <a
             href="#videos"
             className="inline-flex items-center justify-center rounded-pill bg-brand-pink px-9 py-4 text-sm font-bold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-brand-accent hover:shadow-card"
@@ -90,27 +90,23 @@ export function Hero({ config }: Props) {
         </ScrollReveal>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-content px-4 pb-8 md:px-6 md:pb-10">
-        <ScrollReveal delay={0.12}>
-          <dl className="hero-glass-bar flex flex-col gap-4 rounded-2xl px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:py-5">
-            <div className="min-w-0 flex-1">
-              <dt className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/80">Date</dt>
-              <dd className="hero-readable mt-1 truncate text-sm font-semibold md:text-base">{config.displayDate}</dd>
-            </div>
-            <div className="hidden h-8 w-px shrink-0 bg-white/25 sm:block" aria-hidden="true" />
-            <div className="min-w-0 flex-1">
-              <dt className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/80">Time</dt>
-              <dd className="hero-readable mt-1 text-sm font-semibold md:text-base">{config.displayTime}</dd>
-            </div>
-            <div className="hidden h-8 w-px shrink-0 bg-white/25 sm:block" aria-hidden="true" />
-            <div className="min-w-0 flex-[1.4]">
-              <dt className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/80">Venue</dt>
-              <dd className="hero-readable mt-1 text-sm font-semibold leading-snug md:text-base">
-                {config.venue.name}, {config.venue.city}
-              </dd>
-            </div>
-          </dl>
-        </ScrollReveal>
+      <div className="relative z-10 mx-auto w-full max-w-content shrink-0 px-4 pb-4 md:px-6 md:pb-6">
+        <dl className="hero-glass-bar grid grid-cols-3 gap-3 rounded-2xl px-4 py-3 sm:gap-6 sm:px-6 sm:py-4">
+          <div className="min-w-0">
+            <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/80">Date</dt>
+            <dd className="hero-readable mt-1 text-xs font-semibold leading-snug sm:text-sm md:text-base">{config.displayDate}</dd>
+          </div>
+          <div className="min-w-0 border-l border-white/25 pl-3 sm:pl-6">
+            <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/80">Time</dt>
+            <dd className="hero-readable mt-1 text-xs font-semibold leading-snug sm:text-sm md:text-base">{config.displayTime}</dd>
+          </div>
+          <div className="min-w-0 border-l border-white/25 pl-3 sm:pl-6">
+            <dt className="text-[0.6rem] font-bold uppercase tracking-[0.16em] text-white/80">Venue</dt>
+            <dd className="hero-readable mt-1 text-xs font-semibold leading-snug sm:text-sm md:text-base">
+              {config.venue.name}, {config.venue.city}
+            </dd>
+          </div>
+        </dl>
       </div>
     </section>
   );

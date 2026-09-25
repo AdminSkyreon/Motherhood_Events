@@ -37,7 +37,7 @@ function CountdownUnit({
     return (
       <div className="flex flex-col items-center md:items-start">
         <span
-          className={`font-serif text-4xl font-normal tabular-nums sm:text-5xl md:text-6xl ${
+          className={`font-serif text-3xl font-normal tabular-nums sm:text-4xl md:text-5xl ${
             placeholder ? "text-white/40" : "text-white"
           }`}
         >

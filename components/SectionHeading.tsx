@@ -19,7 +19,7 @@ export function SectionHeading({ eyebrow, title, id, description, inverted, clas
       </p>
       <h2
         id={id}
-        className={`mt-3 font-serif text-[clamp(2rem,4.5vw,3.25rem)] font-normal leading-[1.08] tracking-tight ${
+        className={`mt-2 font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] font-normal leading-[1.08] tracking-tight ${
           inverted ? "text-white" : "text-brand-ink"
         }`}
       >

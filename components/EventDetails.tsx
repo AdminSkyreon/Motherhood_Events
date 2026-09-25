@@ -42,12 +42,12 @@ export function EventDetails({ config }: Props) {
   ];
 
   return (
-    <section id="about" className="bg-white px-4 py-24 md:px-6 md:py-32" aria-labelledby="about-heading">
+    <section id="about" className="bg-white px-4 py-12 md:px-6 md:py-16" aria-labelledby="about-heading">
       <div className="mx-auto max-w-content">
-        <div className="grid gap-16 lg:grid-cols-12 lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start">
           <ScrollReveal className="lg:col-span-5">
             <SectionHeading eyebrow="About the event" title="Event details" id="about-heading" />
-            <ul className="mt-10 space-y-8">
+            <ul className="mt-6 space-y-4">
               {facts.map((fact, i) => (
                 <li key={fact.label} className="flex gap-4">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-brand-blush/60 text-brand-pink">

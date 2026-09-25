@@ -10,6 +10,8 @@ type Props = {
   priority?: boolean;
   /** Tall arch mask for faculty cards */
   arch?: boolean;
+  /** No decorative mask — the card frame crops the photo */
+  plain?: boolean;
 };
 
 export function SpeakerPortrait({
@@ -19,9 +21,10 @@ export function SpeakerPortrait({
   avatarVariant = "speaker",
   priority,
   arch = false,
+  plain = false,
 }: Props) {
   const src = assetPath(photoSrc);
-  const mask = arch ? "arch-speaker" : "arch-photo";
+  const mask = plain ? "" : arch ? "arch-speaker" : "arch-photo";
 
   if (isPlaceholderSpeakerPhoto(photoSrc)) {
     return <InitialsAvatar name={name} variant={avatarVariant} className={`${mask} ${className}`} />;
@@ -34,7 +37,7 @@ export function SpeakerPortrait({
       width={400}
       height={500}
       priority={priority}
-      className={`aspect-[4/5] w-full object-cover ${mask} ${className}`}
+      className={`${plain ? "h-full w-full object-cover object-[center_18%]" : "aspect-[4/5] w-full object-cover"} ${mask} ${className}`}
     />
   );
 }

@@ -18,6 +18,7 @@ export function EventVideo({ video, className }: Props) {
         designation={video.designation}
         messageTitle={video.title}
         duration={video.duration}
+        posterSrc={video.posterSrc}
         className={className}
       />
     );

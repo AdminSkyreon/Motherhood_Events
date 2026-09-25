@@ -35,6 +35,8 @@ export type FeaturedVideo = {
   designation: string;
   /** Optional label e.g. "2:30" shown on the video card */
   duration?: string;
+  /** Still shown before the video starts */
+  posterSrc?: string;
 };
 
 export type Speaker = {
@@ -96,9 +98,9 @@ export const eventConfig: EventConfig = {
     "A CME on hospital-based natural and water birth — warm, evidence-led, and designed for clinical teams.",
   about:
     "Join Motherhood Hospitals for a continuing medical education programme on natural birthing pathways, water birth protocols in hospital settings, and safe escalation when intervention is needed. Placeholder copy — replace with brochure language before go-live.",
-  startIso: "2026-04-15T09:00:00+05:30",
-  endIso: "2026-04-15T14:00:00+05:30",
-  displayDate: "Wednesday, 15 April 2026 (placeholder)",
+  startIso: "2026-10-05T09:00:00+05:30",
+  endIso: "2026-10-05T14:00:00+05:30",
+  displayDate: "Monday, 5 October 2026 (placeholder)",
   displayTime: "9:00 AM – 2:00 PM IST (placeholder)",
   venue: {
     name: "Motherhood Hospitals — Venue TBC",
@@ -125,6 +127,8 @@ export const eventConfig: EventConfig = {
         "Mr. Vijayarathna Venkatraman and Dr. Sireesha Reddy share perspectives on natural birthing at Motherhood Hospitals.",
       personName: "Mr. Vijayarathna Venkatraman & Dr. Sireesha Reddy",
       designation: "CEO · Motherhood Hospitals & Consultant Obstetrician",
+      duration: "2:15",
+      posterSrc: "/videos/vijayarathna-sireesha-reddy-poster.jpg",
     },
     {
       id: "ceo-message",
@@ -139,19 +143,19 @@ export const eventConfig: EventConfig = {
     {
       id: "day-1",
       label: "Day 1",
-      dateIso: "2026-04-15",
+      dateIso: "2026-10-05",
       items: [
         {
           id: "reg",
-          startIso: "2026-04-15T08:30:00+05:30",
-          endIso: "2026-04-15T09:00:00+05:30",
+          startIso: "2026-10-05T08:30:00+05:30",
+          endIso: "2026-10-05T09:00:00+05:30",
           title: "Registration",
           description: "Coffee and check-in",
         },
         {
           id: "welcome",
-          startIso: "2026-04-15T09:00:00+05:30",
-          endIso: "2026-04-15T09:20:00+05:30",
+          startIso: "2026-10-05T09:00:00+05:30",
+          endIso: "2026-10-05T09:20:00+05:30",
           title: "Welcome",
           speaker: "Mr. Vijayarathna Venkatraman",
           description: "Opening remarks",
@@ -159,44 +163,44 @@ export const eventConfig: EventConfig = {
         },
         {
           id: "session-1",
-          startIso: "2026-04-15T09:20:00+05:30",
-          endIso: "2026-04-15T10:10:00+05:30",
+          startIso: "2026-10-05T09:20:00+05:30",
+          endIso: "2026-10-05T10:10:00+05:30",
           title: "Natural birth vs standard delivery",
           speaker: "Dr. Sireesha Reddy",
           description: "Clinical perspectives — confirm from brochure",
         },
         {
           id: "tea",
-          startIso: "2026-04-15T10:10:00+05:30",
-          endIso: "2026-04-15T10:30:00+05:30",
+          startIso: "2026-10-05T10:10:00+05:30",
+          endIso: "2026-10-05T10:30:00+05:30",
           title: "Tea break",
           isBreak: true,
         },
         {
           id: "session-2",
-          startIso: "2026-04-15T10:30:00+05:30",
-          endIso: "2026-04-15T11:20:00+05:30",
+          startIso: "2026-10-05T10:30:00+05:30",
+          endIso: "2026-10-05T11:20:00+05:30",
           title: "Water birth in hospital",
           description: "Protocols and safety",
         },
         {
           id: "session-3",
-          startIso: "2026-04-15T11:20:00+05:30",
-          endIso: "2026-04-15T12:10:00+05:30",
+          startIso: "2026-10-05T11:20:00+05:30",
+          endIso: "2026-10-05T12:10:00+05:30",
           title: "Support in labour",
           description: "Movement, hydrotherapy, the birth team",
         },
         {
           id: "lunch",
-          startIso: "2026-04-15T13:00:00+05:30",
-          endIso: "2026-04-15T13:45:00+05:30",
+          startIso: "2026-10-05T13:00:00+05:30",
+          endIso: "2026-10-05T13:45:00+05:30",
           title: "Lunch",
           isBreak: true,
         },
         {
           id: "open",
-          startIso: "2026-04-15T13:45:00+05:30",
-          endIso: "2026-04-15T14:00:00+05:30",
+          startIso: "2026-10-05T13:45:00+05:30",
+          endIso: "2026-10-05T14:00:00+05:30",
           title: "Open house",
           description: "Questions and cases",
         },

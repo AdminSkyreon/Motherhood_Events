@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { assetPath } from "@/lib/site-url";
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   designation?: string;
   messageTitle?: string;
   duration?: string;
+  posterSrc?: string;
   className?: string;
 };
 
@@ -17,90 +18,103 @@ export function LocalVideoPlayer({
   fileSrc,
   title,
   personName,
-  designation,
-  messageTitle,
   duration,
+  posterSrc,
   className = "",
 }: Props) {
+  const wrapRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
+  const [needsSound, setNeedsSound] = useState(false);
   const src = assetPath(fileSrc);
-  const playLabel = personName ? `Play message from ${personName}` : `Play video: ${title}`;
+  const poster = posterSrc ? assetPath(posterSrc) : undefined;
 
-  const startPlayback = () => {
-    setPlaying(true);
-    requestAnimationFrame(() => {
-      void videoRef.current?.play();
+  const play = (video: HTMLVideoElement) => {
+    setStarted(true);
+    const attempt = video.play();
+    if (!attempt) return;
+    attempt.catch(() => {
+      video.muted = true;
+      setNeedsSound(true);
+      void video.play();
     });
   };
 
-  if (playing) {
-    return (
-      <div className={`aspect-video overflow-hidden rounded-[20px] bg-brand-ink shadow-card ${className}`}>
-        <video
-          ref={videoRef}
-          className="h-full w-full object-contain bg-black"
-          controls
-          playsInline
-          preload="metadata"
-          title={title}
-        >
-          <source src={src} type="video/mp4" />
-          Your browser does not support embedded video.
-        </video>
-      </div>
+  useEffect(() => {
+    const node = wrapRef.current;
+    const video = videoRef.current;
+    if (!node || !video) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+          if (!reduceMotion) play(video);
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: [0, 0.5] },
     );
-  }
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <button
-      type="button"
-      className={`group relative aspect-video w-full overflow-hidden rounded-[20px] bg-gradient-to-br from-[#3d2430] via-brand-ink to-[#1a1416] shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink ${className}`}
-      onClick={startPlayback}
-      aria-label={playLabel}
-    >
+    <div ref={wrapRef} className={`relative aspect-video overflow-hidden bg-black ${className}`}>
       <video
-        className="absolute inset-0 h-full w-full object-cover opacity-40"
-        muted
+        ref={videoRef}
+        className="h-full w-full object-contain bg-black"
+        poster={poster}
         playsInline
+        controls={started}
         preload="metadata"
-        aria-hidden="true"
+        title={title}
       >
         <source src={src} type="video/mp4" />
+        Your browser does not support embedded video.
       </video>
 
-      <span
-        className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/35 to-brand-ink/20"
-        aria-hidden="true"
-      />
-
-      {duration && (
-        <span className="absolute right-4 top-4 rounded-pill bg-brand-ink/75 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-          {duration}
-        </span>
-      )}
-
-      <span className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-        <span className="video-play-ring flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white shadow-lift transition group-hover:scale-105 md:h-[72px] md:w-[72px]">
-          <svg viewBox="0 0 24 24" className="ml-1 h-8 w-8 fill-brand-pink md:h-9 md:w-9" aria-hidden="true">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </span>
-      </span>
-
-      {personName && (
-        <span className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-20 text-left">
-          <span className="block font-serif text-lg text-white md:text-xl">{personName}</span>
-          {designation && (
-            <span className="mt-0.5 block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white/80">
-              {designation}
+      {!started && (
+        <button
+          type="button"
+          className="group absolute inset-0 flex items-center justify-center focus-visible:outline-none"
+          aria-label={personName ? `Play message from ${personName}` : `Play video: ${title}`}
+          onClick={() => {
+            const video = videoRef.current;
+            if (video) play(video);
+          }}
+        >
+          {poster && <img src={poster} alt="" className="absolute inset-0 h-full w-full object-cover" />}
+          <span className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(35,31,32,0.2),transparent_58%)]" />
+          {duration && (
+            <span className="absolute right-4 top-4 rounded-pill bg-white/95 px-2.5 py-1 text-xs font-semibold text-brand-ink shadow-soft">
+              {duration}
             </span>
           )}
-          {(messageTitle ?? title) && (
-            <span className="mt-2 block line-clamp-2 text-sm text-white/75">{messageTitle ?? title}</span>
-          )}
-        </span>
+          <span className="video-play-ring relative flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lift transition group-hover:scale-105">
+            <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 fill-brand-pink" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
       )}
-    </button>
+
+      {needsSound && (
+        <button
+          type="button"
+          className="absolute left-4 top-4 z-10 rounded-pill bg-white px-3 py-1.5 text-xs font-bold text-brand-ink shadow-soft"
+          onClick={() => {
+            const video = videoRef.current;
+            if (!video) return;
+            video.muted = false;
+            setNeedsSound(false);
+            void video.play();
+          }}
+        >
+          Tap for sound
+        </button>
+      )}
+    </div>
   );
 }

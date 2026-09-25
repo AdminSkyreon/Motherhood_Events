@@ -8,13 +8,13 @@ export function Venue({ config }: Props) {
   const { venue } = config;
 
   return (
-    <section id="venue" className="bg-white px-4 py-24 md:px-6 md:py-32" aria-labelledby="venue-heading">
+    <section id="venue" className="bg-white px-4 py-12 md:px-6 md:py-16" aria-labelledby="venue-heading">
       <div className="mx-auto max-w-content">
         <ScrollReveal>
           <SectionHeading eyebrow="Location" title="Venue" id="venue-heading" />
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-10">
           <ScrollReveal>
             <address className="not-italic">
               <p className="font-serif text-3xl text-brand-ink">{venue.name}</p>
@@ -40,7 +40,7 @@ export function Venue({ config }: Props) {
               <iframe
                 title={`Map showing ${venue.name}`}
                 src={venue.mapEmbedUrl}
-                className="aspect-[4/3] w-full border-0 lg:aspect-video"
+                className="aspect-[16/10] w-full border-0 lg:aspect-[2/1]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 allowFullScreen

@@ -8,7 +8,7 @@ export function Footer({ config }: Props) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-ink px-4 py-16 md:px-6 md:py-20">
+    <footer className="bg-brand-ink px-4 py-10 md:px-6 md:py-12">
       <div className="mx-auto max-w-content">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-start md:justify-between md:text-left">
           <div>
@@ -30,8 +30,8 @@ export function Footer({ config }: Props) {
             </a>
           </div>
         </div>
-        <p className="mt-12 max-w-3xl text-xs leading-relaxed text-white/45 md:text-sm">{config.footer.disclaimer}</p>
-        <p className="mt-8 text-xs text-white/35">© {year} Motherhood Hospitals. Showcase / review build.</p>
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-white/45 md:text-sm">{config.footer.disclaimer}</p>
+        <p className="mt-4 text-xs text-white/35">© {year} Motherhood Hospitals. Showcase / review build.</p>
       </div>
     </footer>
   );

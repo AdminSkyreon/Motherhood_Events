@@ -52,7 +52,7 @@ function AgendaRow({
   if (item.isBreak) {
     return (
       <ScrollReveal delay={index * 0.05}>
-        <li className="relative flex gap-6 pb-6">
+        <li className="relative flex gap-4 pb-3">
           <div className="w-[5.5rem] shrink-0 pt-1">
             <time dateTime={item.startIso} className="font-serif text-lg font-bold tabular-nums text-brand-ink/55">
               {clock.time}
@@ -78,7 +78,7 @@ function AgendaRow({
 
   return (
     <ScrollReveal delay={index * 0.05}>
-      <li className="group relative flex gap-6 pb-6">
+      <li className="group relative flex gap-4 pb-3">
         <div className="w-[5.5rem] shrink-0 pt-1 text-right md:text-left">
           <time dateTime={item.startIso} className="block font-serif text-3xl font-bold tabular-nums text-brand-ink">
             {clock.time}
@@ -150,12 +150,12 @@ export function Agenda({ config }: Props) {
   );
 
   return (
-    <section id="agenda" className="bg-brand-cream px-4 py-24 md:px-6 md:py-32" aria-labelledby="agenda-heading">
+    <section id="agenda" className="bg-brand-cream px-4 py-12 md:px-6 md:py-16" aria-labelledby="agenda-heading">
       <div className="mx-auto max-w-content">
-        <div className="lg:grid lg:grid-cols-[minmax(240px,320px)_1fr] lg:gap-16 xl:gap-20">
+        <div className="lg:grid lg:grid-cols-[minmax(220px,280px)_1fr] lg:gap-10">
           <ScrollReveal className="lg:sticky lg:top-28 lg:self-start">
             <p className="text-[0.7rem] font-bold uppercase tracking-[0.22em] text-brand-pink">The program</p>
-            <h2 id="agenda-heading" className="mt-3 font-serif text-[clamp(2rem,4vw,2.75rem)] text-brand-ink">
+            <h2 id="agenda-heading" className="mt-2 font-serif text-[clamp(1.75rem,3.5vw,2.5rem)] text-brand-ink">
               Event Schedule
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-brand-ink/70">
@@ -164,7 +164,7 @@ export function Agenda({ config }: Props) {
 
             {days.length > 0 && (
               <div
-                className="mt-8 inline-flex flex-wrap gap-1 rounded-pill border border-brand-blush bg-white p-1 shadow-soft"
+                className="mt-5 inline-flex flex-wrap gap-1 rounded-pill border border-brand-blush bg-white p-1 shadow-soft"
                 role="tablist"
                 aria-label="Agenda days"
               >
@@ -207,7 +207,7 @@ export function Agenda({ config }: Props) {
             role="tabpanel"
             id={`agenda-panel-${activeDayId}`}
             aria-labelledby={`agenda-tab-${activeDayId}`}
-            className="mt-12 lg:mt-0"
+            className="mt-8 lg:mt-0"
           >
             <ol className="relative space-y-0 pl-0 md:pl-6">
               <div
